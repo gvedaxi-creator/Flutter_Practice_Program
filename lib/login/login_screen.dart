@@ -1,0 +1,146 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'login_controller.dart';
+
+class login_screen extends StatelessWidget {
+  login_screen({super.key});
+
+  // TextEditingController name = TextEditingController();
+  // TextEditingController password = TextEditingController();
+
+  final LoginController controller = Get.put(LoginController());
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Center(
+                  child: Text(
+                    "Login to your account",
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "Provide your username and password to \n access your account",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                      height: 1.4,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Text("Username"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: controller.email,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black87),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black87),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Text("Password", textAlign: TextAlign.left),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: controller.password,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black87),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black87),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 40,
+                          right: 40,
+                          top: 30,
+                          bottom: 30,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.loginCont();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xff16375A),
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Text("LOGIN"),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text("Dont have an account?"), Text("Register")],
+                ),
+                Text("Forgot Password?"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
